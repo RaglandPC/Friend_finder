@@ -1,0 +1,27 @@
+body {
+    width: 75%;
+   margin: 0px auto; 
+
+   display: flex;
+   min-height: 100vh;
+   flex-direction: column;
+}
+
+nav {
+    height: 100px;
+    line-height: -8px;
+    
+
+}
+
+.brand-logo {
+    
+    margin-left: 30px;
+	margin-top: 20px;
+    
+}
+
+.hide-on-med-and-down {
+    margin-left: 50px;
+	margin-top: 20px;
+}
