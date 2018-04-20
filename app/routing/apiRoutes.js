@@ -2,7 +2,19 @@
 // this will take my anwsers and compare them with my friends obj, and matches them with someone,
 // after compare will send user the best match from users anwers.
 //var an = require('../public/survey')
+
+
+// Pull in required dependencies
+var path = require('path');
+
+// Import the list of friend entries
+var friends = require('../data/friends.js')
+
 module.exports = function(app) {
+    app.get('/api/friends', function(req, res) {
+		res.json(friends);
+	});
+
 
     app.post("/api/survey", function(req, res) {
         console.log(req.body);
