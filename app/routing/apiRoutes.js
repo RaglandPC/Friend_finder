@@ -16,9 +16,9 @@ module.exports = function(app) {
 	});
 
 
-    app.post("/api/survey", function(req, res) {
-        console.log(req.body);
-        res.json('hello world');
+    // app.post("/api/survey", function(req, res) {
+    //     console.log(req.body);
+    //     res.json('hello world');
 
 
         // req.body hosts is equal to the JSON post sent from the user
@@ -34,8 +34,8 @@ module.exports = function(app) {
         characters.push(newcharacter);
     
         res.json(newcharacter);*/
-    });
-}
+//     });
+// }
 
 //
-//route for data (friends) obj
+// route for data (friends) obj
