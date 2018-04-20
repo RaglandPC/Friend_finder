@@ -7,11 +7,19 @@ body {
    flex-direction: column;
 }
 
+main {
+    flex: 1 0 auto;
+}
+
 nav {
     height: 100px;
     line-height: -8px;
     
 
+}
+
+h1 {
+    font: bold;
 }
 
 .brand-logo {
