@@ -2,8 +2,6 @@
 // this will take my anwsers and compare them with my friends obj, and matches them with someone,
 // after compare will send user the best match from users anwers.
 //var an = require('../public/survey')
-
-
 // Pull in required dependencies
 var path = require('path');
 
@@ -13,29 +11,43 @@ var friends = require('../data/friends.js')
 module.exports = function(app) {
     app.get('/api/friends', function(req, res) {
 		res.json(friends);
+    });
+    
+    app.post('/api/friends', function(req, res) {
+		// Capture the user input object
+		var userInput = req.body;
+	
+		var userResponses = userInput.scores;
+		// Compute best friend match
+		var matchName = '';
+		var matchImage = '';
+		var totalDifference = 10000; 
+
+		// Examine all existing friends in the list
+		for (var i = 0; i < friends.length; i++) {
+		
+
+			// Compute differenes for each question
+			var diff = 0;
+			for (var j = 0; j < userResponses.length; j++) {
+				diff += Math.abs(friends[i].scores[j] - userResponses[j]);
+			}
+
+			// If lowest difference, record the friend match
+			if (diff < totalDifference) {
+			
+				totalDifference = diff;
+				matchName = friends[i].name;
+				matchImage = friends[i].photo;
+			}
+		}
+
+		// Add new user
+		friends.push(userInput);
+
+		// Send appropriate response
+		res.json({status: 'OK', matchName: matchName, matchImage: matchImage});
 	});
+  
+}
 
-
-    // app.post("/api/survey", function(req, res) {
-    //     console.log(req.body);
-    //     res.json('hello world');
-
-
-        // req.body hosts is equal to the JSON post sent from the user
-        // This works because of our body-parser middleware
-        /*var newcharacter = req.body;
-    
-        // Using a RegEx Pattern to remove spaces from newCharacter
-        // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-        newcharacter.routeName = newcharacter.name.replace(/\s+/g, "").toLowerCase();
-    
-        console.log(newcharacter);
-    
-        characters.push(newcharacter);
-    
-        res.json(newcharacter);*/
-//     });
-// }
-
-//
-// route for data (friends) obj

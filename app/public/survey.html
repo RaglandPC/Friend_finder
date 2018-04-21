@@ -35,7 +35,7 @@
                         <a href="/home">Home</a>
                     </li>
                     <li>
-                        <a href="api/frieds.js">Friends List</a>
+                        <a href="/api/friends">Friends List</a>
                     </li>
                     <li>
                         <a href="https://github.com/RaglandPC/Friend_finder">GitHub Repo</a>
@@ -57,13 +57,13 @@
 
                         <div class="input-field col s6">
                             <h5>Name (Required)</h5>
-                            <i class="material-icons prefix">account_circle</i>
+                          
                             <input type="text" class="validate" placeholder="Your Name Here" id="userName">
                         </div>
 
                         <div class="input-field col s6">
                             <h5>Link to Photo Image (Required)</h5>
-                            <i class="material-icons prefix">picture_in_picture</i>
+                           
                             <input type="text" class="validate" placeholder="Photo Link Here" id="userPhoto">
                         </div>
 
@@ -210,55 +210,53 @@
         </div>
     </main>
 
-
-
-
-
-
     <footer class="page-footer blue accent-2">
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">
-                    <h5 class="white-text">Footer Content</h5>
-                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                    <h5 class="white-text">Links to my other sites</h5>
+                    <p class="grey-text text-lighten-4">© 2018 Jacob Ragland</p>
                 </div>
                 <div class="col l4 offset-l2 s12">
                     <h5 class="white-text">Links</h5>
                     <ul>
                         <li>
-                            <a class="grey-text text-lighten-3" href="#!">Link 1</a>
+                            <a class="grey-text text-lighten-3" href="https://www.linkedin.com/in/jake-ragland-a65086a9/">Stackoverflow</a>
                         </li>
                         <li>
-                            <a class="grey-text text-lighten-3" href="#!">Link 2</a>
+                            <a class="grey-text text-lighten-3" href="https://stackoverflow.com/users/9008688/jacob-ragland">Linkedin</a>
                         </li>
                         <li>
-                            <a class="grey-text text-lighten-3" href="#!">Link 3</a>
-                        </li>
-                        <li>
-                            <a class="grey-text text-lighten-3" href="#!">Link 4</a>
+                            <a class="grey-text text-lighten-3" href="https://raglandpc.github.io/Bootstrap-Portfolio/">My Website</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="footer-copyright">
-            <div class="container">
-                © 2018 Jacob Ragland
 
-            </div>
-        </div>
     </footer>
+    <div id="modal1" class="modal">
+		<div class="modal-content">
+			<h4>Make a New Friend</h4>
+			<div class="divider"></div>
+			<h5 id="userMatch"></h5>
+			<img id="userMatchImage" class="materialboxed" width="650" src="">
+		</div>
+		<div class="modal-footer">
+			<a href="/survey" class="modal-action modal-close waves-effect waves-green btn-flat">Great Job!</a>
+		</div>
+	</div>
     <!-- for drop down menu on form -->
     <script type="text/javascript">
     $(document).ready(function(){
         $('select').formSelect();
         $('.modal').modal({
-				dismissible: false, // Modal can be dismissed by clicking outside of the modal
-				opacity: .5, // Opacity of modal background
-				inDuration: 300, // Transition in duration
-				outDuration: 200, // Transition out duration
-				startingTop: '4%', // Starting top style attribute
-				endingTop: '10%' // Ending top style attribute
+				dismissible: false, 
+				opacity: .5, 
+				inDuration: 300, 
+				outDuration: 200, 
+				startingTop: '4%', 
+				endingTop: '10%' 
 			});
       });
       $('#submitButton').on('click', function(event) {
@@ -280,12 +278,10 @@
 					$('#question10').val().trim()
 				]
 			};
-			// console.log('userInput = ' + JSON.stringify(userInput));
-			// Add user inputs to friends list
+		
 			$.post('/api/friends', userInput)
       		.done(function(data) {
-      			// console.log('response = ' + JSON.stringify(data));
-      			// Set the name and image values of friend match
+      	
       			$('#userMatch').html(data.matchName);
 		    	$("#userMatchImage").attr("src", data.matchImage);
 		    	// Pop open the modal dialog
